@@ -7,6 +7,8 @@ open Microsoft.AspNetCore.Http
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
 
+open Mqtt
+
 type Startup() =
 
     // This method gets called by the runtime. Use this method to add services to the container.
@@ -22,3 +24,6 @@ type Startup() =
         app.UseRouting(fun routing ->
             routing.MapGet("/", fun context -> context.Response.WriteAsync("Hello World!")) |> ignore
             ) |> ignore
+
+        Mqtt.Connection() |> ignore
+
